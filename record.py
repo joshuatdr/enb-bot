@@ -1,9 +1,9 @@
 from pynput import mouse, keyboard
-from time import time
+from time import time, sleep
 import json
 import os
 
-OUTPUT_FILENAME = 'actions_test_01'
+OUTPUT_FILENAME = 'test\\actions_test_01'
 # Declare mouse_listener globally so that keyboard on_release can stop it
 mouse_listener = None
 # Declare our start_time globally so that the callback functions can reference it
@@ -19,16 +19,17 @@ class EventType():
     CLICK = 'click'
 
 def main():
+    print('Recording starts in 5 seconds ...')
+    sleep(5)
+    print('Recording started.')
     runListeners()
-    print('Recording duration: {:.3f} seconds'.format(elapsed_time()))
-    global input_events
-    print(json.dumps(input_events))
+    print(f'Recording duration: {elapsed_time():.3f} seconds')
 
     script_dir = os.path.dirname(__file__)
     filepath = os.path.join(
         script_dir,
         'recordings',
-        '{}.json'.format(OUTPUT_FILENAME)
+        f'{OUTPUT_FILENAME}.json'
         )
     with open(filepath, 'w') as outfile:
         json.dump(input_events, outfile, indent=4)
@@ -38,6 +39,10 @@ def elapsed_time():
     return time() - start_time
 
 def record_event(event_type, event_time, button, pos=None):
+    # Don't record escape key inputs
+    if (button == keyboard.Key.esc):
+        return
+    
     global input_events
     input_events.append({
         'time': event_time,
@@ -47,9 +52,9 @@ def record_event(event_type, event_time, button, pos=None):
     })
 
     if event_type == EventType.CLICK:
-        print('{} on {} pos {} at {}'.format(event_type, button, pos, event_time))
+        print(f'{event_type} on {button} pos {pos} at {event_time}')
     else:
-        print('{} on {} at {}'.format(event_type, button, event_time))
+        print(f'{event_type} on {button} at {event_time}')
 
 def on_press(key):
     # Ignore if key already pressed
@@ -70,11 +75,11 @@ def on_release(key):
     try:
         unreleased_keys.remove(key)
     except ValueError:
-        print('ERROR: {} not in unreleased_keys'.format(key))
+        print(f'ERROR: {key} not in unreleased_keys')
 
     try:
         record_event(EventType.KEYUP, elapsed_time(), key.char)
-    except AttributeError:
+    except AttributeError:# Don't record escape inputs
         record_event(EventType.KEYUP, elapsed_time(), key)
 
     if key == keyboard.Key.esc:

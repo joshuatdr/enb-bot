@@ -1,6 +1,7 @@
 import pyautogui
 from time import sleep, time
 from random import random
+from main import randomWait
 import json
 import os
 
@@ -9,6 +10,14 @@ def main():
     countdownTimer()
 
     playActions('actions_test_01.json')
+    # playActions('earthstation_goto_trader.json')
+    # randomWait(2)
+    # playActions('earthstation_do_trading.json')
+    # randomWait(2)
+    # playActions('earthstation_goto_ship.json')
+    # randomWait(15)
+    # playActions('earthstation_goto_lokistation.json')
+    # randomWait(2)
 
     # Done
     print('Done')
@@ -30,7 +39,7 @@ def playActions(filename):
     script_dir = os.path.dirname(__file__)
     filepath = os.path.join(
         script_dir,
-        'recordings',
+        'recordings\\test',
         filename
         )
     with open(filepath, 'r') as jsonfile:
@@ -50,14 +59,14 @@ def playActions(filename):
             if action['type'] == 'keyDown':
                 key = convertKey(action['button'])
                 pyautogui.keyDown(key)
-                print('keyDown on {}'.format(key))
+                print(f'keyDown on {key}')
             elif action['type'] == 'keyUp':
                 key = convertKey(action['button'])
                 pyautogui.keyUp(key)
-                print('keyUp on {}'.format(key))
+                print(f'keyUp on {key}')
             elif action['type'] == 'click':
                 pyautogui.click(action['pos'][0], action['pos'][1], duration=0.25)
-                print('click on {}'.format(action['pos']))
+                print(f'click on {action['pos']}')
 
             # Then sleep until next action should occur
             try:
@@ -69,10 +78,11 @@ def playActions(filename):
             if elapsed_time < 0:
                 raise Exception('Unexpected action ordering')
             
+            # Subtract the execution time
             elapsed_time -= (time() - action_start_time)
             if elapsed_time < 0:
                 elapsed_time = 0
-            print('Sleeping for {}'.format(elapsed_time))
+            print(f'Sleeping for {elapsed_time}')
             sleep(elapsed_time)
 
 # Convert pynput keys into pyautogui keys

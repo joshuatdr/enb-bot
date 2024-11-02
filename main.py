@@ -9,9 +9,9 @@ def main():
     # goToMerchant()
     # tradeWithMerchant()
     # returnToShip()
-    # flyToEarthStation()
+    flyToEarthStation()
 
-    reportMousePosition()
+    # reportMousePosition()
 
     # Done
     print('Done')
@@ -19,7 +19,6 @@ def main():
 def initialisePyAutoGui():
     # Initialised PyAutoGUI
     pyautogui.FAILSAFE = True
-    pyautogui.PAUSE = 0
 
 def countdownTimer():
     # Countdown timer
@@ -33,13 +32,13 @@ def randomWait(minWait = 0.5):
     # Wait for (minWait) seconds with a random additional delay (0.0 - 0.5s)
     timeToWait = minWait + random() * 0.5
     if (minWait > 0.1):
-        print('Waiting {:.3f} seconds'.format(timeToWait))
+        print(f'Waiting {timeToWait:.3f} seconds')
     sleep(timeToWait)
 
 def holdKey(key, seconds=1):
     # Simulate random keypress duration
     keyDuration = seconds + random() * 0.01
-    print('Pressing {0} key for {1:.3f} seconds'.format(key, keyDuration))
+    print(f'Pressing {key} key for {keyDuration:.3f} seconds')
     pyautogui.keyDown(key)
     sleep(keyDuration)
     pyautogui.keyUp(key)
@@ -54,7 +53,7 @@ def moveMouseAndClick(x_pos, y_pos):
     clickDelay = 0.2 + random() * 0.1
     sleep(clickDelay)
     # Click at position
-    print('Clicking at x:{0}, y:{1}'.format(x_pos, y_pos))
+    print(f'Clicking at [{x_pos}, {y_pos}]')
     pyautogui.click()
     # Wait before next command
     randomWait()
@@ -129,7 +128,7 @@ def flyToEarthStation():
     # Open the navigation map
     moveMouseAndClick(84, 569)
     # Select the sector gate to Earth
-    moveMouseAndClick(363, 324)
+    moveMouseAndClick(370, 325)
     # Wait for warp path to be calculated
     randomWait(1.5)
     # Initiate warp
