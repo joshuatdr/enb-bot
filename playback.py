@@ -1,7 +1,6 @@
 import pyautogui
 from time import sleep, time
 from random import random
-from main import randomWait
 import json
 import os
 
@@ -9,16 +8,8 @@ def main():
     initialisePyAutoGui()
     countdownTimer()
 
-    playActions('actions_test_01.json')
-    # playActions('earthstation_goto_trader.json')
-    # randomWait(2)
-    # playActions('earthstation_do_trading.json')
-    # randomWait(2)
-    # playActions('earthstation_goto_ship.json')
-    # randomWait(15)
-    # playActions('earthstation_goto_lokistation.json')
-    # randomWait(2)
-
+    playActions('actions_test_01')
+    
     # Done
     print('Done')
 
@@ -39,8 +30,8 @@ def playActions(filename):
     script_dir = os.path.dirname(__file__)
     filepath = os.path.join(
         script_dir,
-        'recordings\\test',
-        filename
+        'recordings\\enb',
+        f'{filename}.json'
         )
     with open(filepath, 'r') as jsonfile:
         # Parse the JSON
