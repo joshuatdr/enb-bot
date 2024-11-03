@@ -1,92 +1,86 @@
 [
   {
-    "time": 1.5105690956115723,
+    "time": 2.6329760551452637,
     "type": "keyDown",
-    "button": "s",
+    "button": "w",
     "pos": null
   },
   {
-    "time": 7.9437220096588135,
+    "time": 3.853737335205078,
     "type": "keyUp",
-    "button": "s",
+    "button": "w",
     "pos": null
   },
   {
-    "time": 8.873838901519775,
+    "time": 4.772063493728638,
     "type": "keyDown",
     "button": "a",
     "pos": null
   },
   {
-    "time": 9.07,
+    "time": 5.561413288116455,
     "type": "keyUp",
     "button": "a",
     "pos": null
   },
   {
-    "time": 11.255118370056152,
+    "time": 6.12333607673645,
     "type": "keyDown",
     "button": "w",
     "pos": null
   },
   {
-    "time": 18.207424640655518,
+    "time": 8.979054689407349,
     "type": "keyUp",
     "button": "w",
     "pos": null
   },
   {
-    "time": 18.949004650115967,
-    "type": "keyDown",
-    "button": "d",
-    "pos": null
-  },
-  {
-    "time": 19.69915461540222,
-    "type": "keyUp",
-    "button": "d",
-    "pos": null
-  },
-  {
-    "time": 20.205158233642578,
-    "type": "keyDown",
-    "button": "w",
-    "pos": null
-  },
-  {
-    "time": 25.644929885864258,
-    "type": "keyUp",
-    "button": "w",
-    "pos": null
-  },
-  {
-    "time": 26.31078791618347,
+    "time": 9.963124752044678,
     "type": "keyDown",
     "button": "d",
     "pos": null
   },
   {
-    "time": 27.636163234710693,
+    "time": 10.734950304031372,
     "type": "keyUp",
     "button": "d",
     "pos": null
   },
   {
-    "time": 28.01782512664795,
+    "time": 11.419258117675781,
     "type": "keyDown",
     "button": "w",
     "pos": null
   },
   {
-    "time": 29.524405241012573,
+    "time": 12.843963861465454,
+    "type": "keyDown",
+    "button": "d",
+    "pos": null
+  },
+  {
+    "time": 12.97620153427124,
+    "type": "keyUp",
+    "button": "d",
+    "pos": null
+  },
+  {
+    "time": 14.117648124694824,
     "type": "keyUp",
     "button": "w",
     "pos": null
   },
   {
-    "time": 30.5,
+    "time": 14.936681270599365,
     "type": "click",
     "button": "Button.left",
-    "pos": [579, 315]
+    "pos": [189, 352]
+  },
+  {
+    "time": 16.953465223312378,
+    "type": "click",
+    "button": "Button.left",
+    "pos": [685, 395]
   }
 ]

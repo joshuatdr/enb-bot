@@ -1,36 +1,21 @@
 import pyautogui
 from time import sleep, time
-from random import random
+from natsort import natsorted
 import json
 import os
 
 def main():
-    initialisePyAutoGui()
-    countdownTimer()
-
-    playActions('actions_test_01')
-    
-    # Done
-    print('Done')
-
-def initialisePyAutoGui():
     # Initialised PyAutoGUI
     pyautogui.FAILSAFE = True
     pyautogui.PAUSE = 0
-
-def countdownTimer():
-    # Countdown timer
-    print('Starting', end='')
-    for i in range(0, 5):
-        print('.', end='')
-        sleep(1)
-    print('Go')
+    playActions('actions_test_01')
+    print('Done')
 
 def playActions(filename):
     script_dir = os.path.dirname(__file__)
     filepath = os.path.join(
         script_dir,
-        'recordings\\enb',
+        'recordings',
         f'{filename}.json'
         )
     with open(filepath, 'r') as jsonfile:
@@ -95,6 +80,31 @@ def convertKey(button):
         return PYNPUT_SPECIAL_CASE_MAP[cleaned_key]
 
     return cleaned_key
+
+def getStartingPos(station):
+    script_dir = os.path.dirname(__file__)
+    # Get list of needle image filenames by station
+    needles = os.listdir(f'{script_dir}\\needles\\{station}\\start')
+    # Sort the filenames numerically (by default python sorts lexicographically: 1, 10, 11, 2 etc...)
+    images_to_check = natsorted(needles)
+    
+    # Loop over images until one is found, then return the index (+1)
+    for index, image_filename in enumerate(images_to_check):
+        needle_path = os.path.join(
+            script_dir,
+            f'needles\\{station}\\start',
+            image_filename
+            )
+        try:
+            image_pos = pyautogui.locateOnScreen(image=needle_path, confidence=0.99, region=(0,0,806,629))
+            if image_pos:
+                print(f'found starting position: pos_{index + 1}')
+                return index + 1
+        # This is necessary to prevent pyautogui from stopping the script by throwing an ImageNotFoundException
+        except:
+            pass
+    print('unable to determine starting position')
+    return None
 
 if __name__ == '__main__':
     main()

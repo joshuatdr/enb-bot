@@ -3,7 +3,7 @@ from time import time, sleep
 import json
 import os
 
-OUTPUT_FILENAME = 'test\\actions_test_01'
+OUTPUT_FILENAME = 'earthstation\\goto_trader'
 # Declare mouse_listener globally so that keyboard on_release can stop it
 mouse_listener = None
 # Declare our start_time globally so that the callback functions can reference it
