@@ -3,14 +3,14 @@ from time import time, sleep
 import json
 import os
 
-OUTPUT_FILENAME = 'earthstation\\goto_trader'
+OUTPUT_FILENAME = 'lokistation\\start\\pos_3'
 # Declare mouse_listener globally so that keyboard on_release can stop it
 mouse_listener = None
 # Declare our start_time globally so that the callback functions can reference it
 start_time = None
 # Keep track of unreleased keys to prevent over-reporting press events
 unreleased_keys = []
-# Store all input events
+# Store all input events``
 input_events = []
 
 class EventType():
@@ -39,8 +39,8 @@ def elapsed_time():
     return time() - start_time
 
 def record_event(event_type, event_time, button, pos=None):
-    # Don't record escape key inputs
-    if (button == keyboard.Key.esc):
+    # Don't record home key inputs
+    if (button == keyboard.Key.home):
         return
     
     global input_events
@@ -79,10 +79,10 @@ def on_release(key):
 
     try:
         record_event(EventType.KEYUP, elapsed_time(), key.char)
-    except AttributeError:# Don't record escape inputs
+    except AttributeError:
         record_event(EventType.KEYUP, elapsed_time(), key)
 
-    if key == keyboard.Key.esc:
+    if key == keyboard.Key.home:
         # Stop mouse listener
         global mouse_listener
         mouse_listener.stop()

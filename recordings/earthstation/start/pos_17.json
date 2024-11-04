@@ -1,80 +1,80 @@
 [
     {
-        "time": 0.7708292007446289,
+        "time": 0.48769259452819824,
         "type": "keyDown",
         "button": "w",
         "pos": null
     },
     {
-        "time": 3.0869553089141846,
+        "time": 2.748465061187744,
         "type": "keyUp",
         "button": "w",
         "pos": null
     },
     {
-        "time": 3.972402811050415,
+        "time": 3.4156954288482666,
         "type": "keyDown",
         "button": "a",
         "pos": null
     },
     {
-        "time": 4.748327732086182,
+        "time": 4.192810773849487,
         "type": "keyUp",
         "button": "a",
         "pos": null
     },
     {
-        "time": 5.593766450881958,
+        "time": 4.558465957641602,
         "type": "keyDown",
         "button": "w",
         "pos": null
     },
     {
-        "time": 8.6859290599823,
+        "time": 8.001250982284546,
         "type": "keyUp",
         "button": "w",
         "pos": null
     },
     {
-        "time": 9.672189474105835,
+        "time": 8.745452880859375,
         "type": "keyDown",
         "button": "d",
         "pos": null
     },
     {
-        "time": 10.665359258651733,
+        "time": 9.850634574890137,
         "type": "keyUp",
         "button": "d",
         "pos": null
     },
     {
-        "time": 11.326746940612793,
+        "time": 10.312933683395386,
         "type": "keyDown",
         "button": "w",
         "pos": null
     },
     {
-        "time": 13.373072147369385,
+        "time": 12.909846544265747,
         "type": "keyUp",
         "button": "w",
         "pos": null
     },
     {
-        "time": 14.087327480316162,
+        "time": 13.620097398757935,
         "type": "click",
         "button": "Button.left",
         "pos": [
-            154,
-            371
+            95,
+            354
         ]
     },
     {
-        "time": 16.052170991897583,
+        "time": 16.10999298095703,
         "type": "click",
         "button": "Button.left",
         "pos": [
             685,
-            394
+            392
         ]
     }
 ]

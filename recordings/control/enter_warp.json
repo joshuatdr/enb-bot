@@ -1,0 +1,26 @@
+[
+  {
+    "time": 0,
+    "type": "keyDown",
+    "button": "z",
+    "pos": null
+  },
+  {
+    "time": 0.5,
+    "type": "keyUp",
+    "button": "z",
+    "pos": null
+  },
+  {
+    "time": 1,
+    "type": "click",
+    "button": "Button.left",
+    "pos": [463, 174]
+  },
+  {
+    "time": 1.2,
+    "type": "click",
+    "button": "Button.left",
+    "pos": [463, 174]
+  }
+]

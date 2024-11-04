@@ -8,7 +8,8 @@ def main():
     # Initialised PyAutoGUI
     pyautogui.FAILSAFE = True
     pyautogui.PAUSE = 0
-    playActions('actions_test_01')
+    sleep(5)
+    playActions('earthstation\\goto_lokistation')
     print('Done')
 
 def playActions(filename):
@@ -26,10 +27,6 @@ def playActions(filename):
         for index, action in enumerate(data):
             # Account for time taken to read each action
             action_start_time = time()
-
-            # Look for escape input to exit
-            if action['button'] == 'Key.esc':
-                break
 
             # Perform the action
             if action['type'] == 'keyDown':
@@ -58,7 +55,7 @@ def playActions(filename):
             elapsed_time -= (time() - action_start_time)
             if elapsed_time < 0:
                 elapsed_time = 0
-            print(f'Sleeping for {elapsed_time}')
+            # print(f'Sleeping for {elapsed_time:.3f}')
             sleep(elapsed_time)
 
 # Convert pynput keys into pyautogui keys
@@ -81,10 +78,10 @@ def convertKey(button):
 
     return cleaned_key
 
-def getStartingPos(station):
+def getStartingPos():
     script_dir = os.path.dirname(__file__)
-    # Get list of needle image filenames by station
-    needles = os.listdir(f'{script_dir}\\needles\\{station}\\start')
+    # Get list of needle image filenames
+    needles = os.listdir(f'{script_dir}\\needles\\start')
     # Sort the filenames numerically (by default python sorts lexicographically: 1, 10, 11, 2 etc...)
     images_to_check = natsorted(needles)
     
@@ -92,7 +89,7 @@ def getStartingPos(station):
     for index, image_filename in enumerate(images_to_check):
         needle_path = os.path.join(
             script_dir,
-            f'needles\\{station}\\start',
+            f'needles\\start',
             image_filename
             )
         try:
@@ -103,8 +100,7 @@ def getStartingPos(station):
         # This is necessary to prevent pyautogui from stopping the script by throwing an ImageNotFoundException
         except:
             pass
-    print('unable to determine starting position')
-    return None
+    raise Exception('unable to determine starting position')
 
 if __name__ == '__main__':
     main()
